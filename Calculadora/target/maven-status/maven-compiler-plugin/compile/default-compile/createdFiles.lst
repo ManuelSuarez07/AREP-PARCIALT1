@@ -1,0 +1,5 @@
+com\eci\Calculator\Server\Calculadora.class
+com\eci\Calculator\Rest\Service.class
+com\eci\Calculator\Server\HttpServer.class
+com\eci\Calculator\Rest\Response.class
+com\eci\Calculator\Rest\Request.class

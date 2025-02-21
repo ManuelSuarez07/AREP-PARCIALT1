@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bubble Sort</title>
+    </head>
+    <body>
+        <h1>Bubble Sort</h1>
+        <h3>En pagina web se puede organizar una lista usando Bubble Sort</h3>
+        <h4>Bubble Sort es un algoritmo de ordenamiento que funciona comparando repetidamente pares adyacentes de elementos en una lista y, si están en el orden incorrecto, los intercambia. Este proceso se repite hasta que no se necesiten más intercambios, lo que indica que la lista está ordenada. Su nombre se debe a que los elementos "burbujearán" hasta su posición correcta, como burbujas ascendiendo en el agua.</h4>
+        <form id="calculatorForm">
+            <label>Ingrese la lista:</label>
+            <input type="list" id="list" required>
+            <br>
+            <button type="submit">Organizar</button>
+        </form>
+        <h3>Resultado:</h3>
+        <p id="result"></p>
+        <script>
+            document.getElementById("calculatorForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+                let list = document.getElementById("list").value;
+                let url = `/calculate?list=${list}`;
+                fetch(url)
+                        .then(response => response.json())
+                        .then(data => document.getElementById("result").innerText = "Result: " + data.result)
+                        .catch(error => console.error("Error:", error));
+            });
+        </script>
+    </body>
+</html>
+
+
+
+

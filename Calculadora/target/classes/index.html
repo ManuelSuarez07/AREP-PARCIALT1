@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <h3>En esta calculadora se pueden realizar las siguientes operaciones: (Suma, Resta, Multiplicacion, Division, Seno, Coseno, Tangente y Raiz)</h3>
+    <h4>Para las operaciones Suma, Resta, Multiplicacion, Division se deben ingresar 2 valores, Mientras que para Seno, Coseno, Tangente y Raiz solo 1</h4>
+    <form id="calculatorForm">
+        <label>Seleccione operacion a realizar:</label>
+        <select id="operation">
+            <option value="add">Suma(+)</option>
+            <option value="sub">Resta(-)</option>
+            <option value="mul">Multiplicacion(×)</option>
+            <option value="div">Division(÷)</option>
+            <option value="sin">Seno</option>
+            <option value="cos">Coseno</option>
+            <option value="tan">Tangente</option>
+            <option value="sqrt">Raiz</option>
+        </select>
+        <br>
+        <label>Ingrese valor 1:</label>
+        <input type="number" id="value1" required>
+        <br>
+        <label>Ingrese valor 2:</label>
+        <input type="number" id="value2">
+        <br>
+        <button type="submit">Calcular</button>
+    </form>
+    <h3>Resultado:</h3>
+    <p id="result"></p>
+    <script>
+        document.getElementById("calculatorForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let operation = document.getElementById("operation").value;
+            let value1 = document.getElementById("value1").value;
+            let value2 = document.getElementById("value2").value;
+
+            let url = `/calculate?operation=${operation}&value1=${value1}`;
+            if (value2) {
+                url += `&value2=${value2}`;
+            }
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => document.getElementById("result").innerText = "Result: " + data.result)
+                .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
+
+
+
+
